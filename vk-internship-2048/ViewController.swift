@@ -6,7 +6,7 @@
 //  Copyright © 2019 Vsevolod Konyakhin. All rights reserved.
 //
 
-import UIKitg
+import UIKit
 
 class ViewController: UIViewController {
 
