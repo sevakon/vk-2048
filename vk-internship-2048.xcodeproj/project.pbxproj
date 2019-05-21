@@ -38,7 +38,6 @@
 		78B996FC2294A444000D6E56 = {
 			isa = PBXGroup;
 			children = (
-				78B9971A2294A479000D6E56 /* Supporting Files */,
 				78B997072294A444000D6E56 /* vk-internship-2048 */,
 				78B997062294A444000D6E56 /* Products */,
 			);
@@ -55,6 +54,7 @@
 		78B997072294A444000D6E56 /* vk-internship-2048 */ = {
 			isa = PBXGroup;
 			children = (
+				78B9971A2294A479000D6E56 /* Supporting Files */,
 				78B9970A2294A444000D6E56 /* ViewController.swift */,
 				78B9970C2294A444000D6E56 /* Main.storyboard */,
 				78B997112294A448000D6E56 /* LaunchScreen.storyboard */,
@@ -69,7 +69,8 @@
 				78B997082294A444000D6E56 /* AppDelegate.swift */,
 				78B9970F2294A448000D6E56 /* Assets.xcassets */,
 			);
-			path = "Supporting Files";
+			name = "Supporting Files";
+			path = "../Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
