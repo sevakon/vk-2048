@@ -7,18 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		787E5E2422955B950025E126 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 787E5E2222955B950025E126 /* Main.storyboard */; };
+		787E5E2822955D450025E126 /* GameBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787E5E2722955D450025E126 /* GameBoard.swift */; };
+		787E5E2A22981B3B0025E126 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787E5E2922981B3B0025E126 /* GameModel.swift */; };
 		78B997092294A444000D6E56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B997082294A444000D6E56 /* AppDelegate.swift */; };
 		78B9970B2294A444000D6E56 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B9970A2294A444000D6E56 /* ViewController.swift */; };
-		78B9970E2294A444000D6E56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78B9970C2294A444000D6E56 /* Main.storyboard */; };
 		78B997102294A448000D6E56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78B9970F2294A448000D6E56 /* Assets.xcassets */; };
 		78B997132294A448000D6E56 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78B997112294A448000D6E56 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		787E5E2322955B950025E126 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		787E5E2722955D450025E126 /* GameBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBoard.swift; sourceTree = "<group>"; };
+		787E5E2922981B3B0025E126 /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
 		78B997052294A444000D6E56 /* vk-internship-2048.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "vk-internship-2048.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		78B997082294A444000D6E56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		78B9970A2294A444000D6E56 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		78B9970D2294A444000D6E56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		78B9970F2294A448000D6E56 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		78B997122294A448000D6E56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		78B997142294A448000D6E56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -35,6 +39,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		787E5E2022954CE00025E126 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				787E5E2722955D450025E126 /* GameBoard.swift */,
+				787E5E2922981B3B0025E126 /* GameModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		787E5E2122954CEF0025E126 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		78B996FC2294A444000D6E56 = {
 			isa = PBXGroup;
 			children = (
@@ -54,10 +74,11 @@
 		78B997072294A444000D6E56 /* vk-internship-2048 */ = {
 			isa = PBXGroup;
 			children = (
+				787E5E2122954CEF0025E126 /* Views */,
+				787E5E2022954CE00025E126 /* Models */,
 				78B9971A2294A479000D6E56 /* Supporting Files */,
 				78B9970A2294A444000D6E56 /* ViewController.swift */,
-				78B9970C2294A444000D6E56 /* Main.storyboard */,
-				78B997112294A448000D6E56 /* LaunchScreen.storyboard */,
+				787E5E2222955B950025E126 /* Main.storyboard */,
 				78B997142294A448000D6E56 /* Info.plist */,
 			);
 			path = "vk-internship-2048";
@@ -66,6 +87,7 @@
 		78B9971A2294A479000D6E56 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				78B997112294A448000D6E56 /* LaunchScreen.storyboard */,
 				78B997082294A444000D6E56 /* AppDelegate.swift */,
 				78B9970F2294A448000D6E56 /* Assets.xcassets */,
 			);
@@ -131,9 +153,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				787E5E2422955B950025E126 /* Main.storyboard in Resources */,
 				78B997132294A448000D6E56 /* LaunchScreen.storyboard in Resources */,
 				78B997102294A448000D6E56 /* Assets.xcassets in Resources */,
-				78B9970E2294A444000D6E56 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -144,6 +166,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				787E5E2822955D450025E126 /* GameBoard.swift in Sources */,
+				787E5E2A22981B3B0025E126 /* GameModel.swift in Sources */,
 				78B9970B2294A444000D6E56 /* ViewController.swift in Sources */,
 				78B997092294A444000D6E56 /* AppDelegate.swift in Sources */,
 			);
@@ -152,10 +176,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		78B9970C2294A444000D6E56 /* Main.storyboard */ = {
+		787E5E2222955B950025E126 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				78B9970D2294A444000D6E56 /* Base */,
+				787E5E2322955B950025E126 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -228,6 +252,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_ENFORCE_EXCLUSIVE_ACCESS = on;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -282,6 +307,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_ENFORCE_EXCLUSIVE_ACCESS = on;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -300,6 +326,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "VK.vk-internship-2048";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ENFORCE_EXCLUSIVE_ACCESS = on;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -318,6 +345,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "VK.vk-internship-2048";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ENFORCE_EXCLUSIVE_ACCESS = on;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
