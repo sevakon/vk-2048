@@ -9,13 +9,14 @@
 import Foundation
 
 protocol GameModelProtocol : class {
-    func scoreDidChange(to score: Int)
-    func insertTile(at index: (Int, Int), with value: Int)
+    func setTiles(to tiles: [((Int, Int), Int)])
 }
 
 class GameModel {
     
     var gameboard: GameBoard
+    
+    unowned let delegate: GameModelProtocol
     
     var score = 0 {
         didSet {
@@ -23,8 +24,9 @@ class GameModel {
         }
     }
     
-    init() {
+    init(delegate: GameModelProtocol) {
         gameboard = GameBoard(initialValue: .empty)
+        self.delegate = delegate
     }
     
     func reset() {
@@ -36,6 +38,7 @@ class GameModel {
     func insertTile(at index: (Int, Int), with value: Int) {
         let (x, y) = index
         gameboard[x, y] = .tile(value)
+        delegate.setTiles(to: getArrayOfCurrentTiles())
     }
     
     func insertTileAtRandomPosition(with value: Int) {
@@ -248,5 +251,17 @@ class GameModel {
             }
             print(line)
         }
+    }
+    
+    func getArrayOfCurrentTiles() -> [((Int, Int), Int)] {
+        var buffer = [((Int, Int), Int)]()
+        for i in 0..<gameboard.dimension {
+            for j in 0..<gameboard.dimension {
+                if case let .tile(v) = gameboard[i, j] {
+                    buffer.append(((i, j), v))
+                }
+            }
+        }
+        return buffer
     }
 }

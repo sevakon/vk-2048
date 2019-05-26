@@ -1,0 +1,45 @@
+//
+//  TileView.swift
+//  vk-internship-2048
+//
+//  Created by Владимир Коняхин on 26/05/2019.
+//  Copyright © 2019 Vsevolod Konyakhin. All rights reserved.
+//
+
+import UIKit
+
+class TileView: UIView {
+    
+    var value: Int = 0 {
+        didSet {
+            backgroundColor = delegate.tileColor(value: value)
+            numberLabel.textColor = delegate.numberColor(value: value)
+            numberLabel.text = "\(value)"
+        }
+    }
+    
+    unowned let delegate: AppearanceProviderProtocol
+    
+    let numberLabel: UILabel
+    
+    required init(coder: NSCoder) {
+        fatalError("NSCoding not supported")
+    }
+    
+    init(position: CGPoint, width: CGFloat, value: Int, radius: CGFloat, delegate d: AppearanceProviderProtocol) {
+        delegate = d
+        numberLabel = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: width))
+        numberLabel.textAlignment = NSTextAlignment.center
+        numberLabel.minimumScaleFactor = 0.5
+        numberLabel.font = delegate.fontForNumbers(value: value)
+        
+        super.init(frame: CGRect(x: position.x, y: position.y, width: width, height: width))
+        addSubview(numberLabel)
+        layer.cornerRadius = radius
+        
+        self.value = value
+        backgroundColor = delegate.tileColor(value: value)
+        numberLabel.textColor = delegate.numberColor(value: value)
+        numberLabel.text = "\(value)"
+    }
+}
