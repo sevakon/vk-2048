@@ -17,6 +17,7 @@
 		78CE4F9D2299F825005063FF /* TileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CE4F9C2299F825005063FF /* TileView.swift */; };
 		78CE4F9F2299FA58005063FF /* AppearanceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CE4F9E2299FA58005063FF /* AppearanceProvider.swift */; };
 		78CE4FA1229A07D2005063FF /* GameBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CE4FA0229A07D2005063FF /* GameBoardView.swift */; };
+		78CE4FA3229AA810005063FF /* RestartGameButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78CE4FA2229AA810005063FF /* RestartGameButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		78CE4F9C2299F825005063FF /* TileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileView.swift; sourceTree = "<group>"; };
 		78CE4F9E2299FA58005063FF /* AppearanceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceProvider.swift; sourceTree = "<group>"; };
 		78CE4FA0229A07D2005063FF /* GameBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBoardView.swift; sourceTree = "<group>"; };
+		78CE4FA2229AA810005063FF /* RestartGameButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestartGameButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 			children = (
 				78CE4F9C2299F825005063FF /* TileView.swift */,
 				78CE4FA0229A07D2005063FF /* GameBoardView.swift */,
+				78CE4FA2229AA810005063FF /* RestartGameButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -180,6 +183,7 @@
 				78CE4F9F2299FA58005063FF /* AppearanceProvider.swift in Sources */,
 				78B9970B2294A444000D6E56 /* ViewController.swift in Sources */,
 				78CE4F9D2299F825005063FF /* TileView.swift in Sources */,
+				78CE4FA3229AA810005063FF /* RestartGameButton.swift in Sources */,
 				78CE4FA1229A07D2005063FF /* GameBoardView.swift in Sources */,
 				78B997092294A444000D6E56 /* AppDelegate.swift in Sources */,
 			);

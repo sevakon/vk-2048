@@ -18,12 +18,17 @@ class ViewController: UIViewController, GameModelProtocol {
     let padding: CGFloat = 7.0
     let radius: CGFloat = 10.0
     var width: CGFloat?
-
     
+    var restartGameButton = RestartGameButton()
+    
+    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         model = GameModel(delegate: self)
         setupGame()
+        restoreDate()
+        setupButton()
     }
     
     
@@ -73,9 +78,7 @@ class ViewController: UIViewController, GameModelProtocol {
         board!.frame = f
         
         view.addSubview(board!)
-        
-        model!.insertTileAtRandomPosition(with: 2)
-        model!.insertTileAtRandomPosition(with: 2)
+    
     }
     
     func followUp() {
@@ -83,33 +86,70 @@ class ViewController: UIViewController, GameModelProtocol {
         model!.insertTileAtRandomPosition(with: randomVal == 1 ? 4 : 2)
         
         if model!.userHasLost() {
-            let alertView = UIAlertView()
-            alertView.title = "Defeat"
-            alertView.message = "You lost..."
-            alertView.addButton(withTitle: "Cancel")
-            alertView.show()
+            let alertControllerForLose = UIAlertController(title: "Defeat", message: "You lost 💀", preferredStyle: .alert)
             
-            //todo: reset the game
+            let actionRestart = UIAlertAction(title: "Try again", style: .default) {
+                UIAlertAction in
+                self.restartGame()
+            }
+            
+            alertControllerForLose.addAction(actionRestart)
+            
+            self.present(alertControllerForLose, animated: true, completion: nil)
             //possibly add buttons
         }
         
         if model!.userHasWon() {
-            let alertView = UIAlertView()
-            alertView.title = "Victory!"
-            alertView.message = "You won!"
-            alertView.addButton(withTitle: "Cancel")
-            alertView.show()
+            let alertControllerForWin = UIAlertController(title: "Victory!", message: "You won", preferredStyle: .alert)
             
-            //todo: reset the game
-            //possibly add buttons
+            let actionRestart = UIAlertAction(title: "Start a new game", style: .default) {
+                UIAlertAction in
+                self.restartGame()
+            }
+            
+            alertControllerForWin.addAction(actionRestart)
+            
+            self.present(alertControllerForWin, animated: true, completion: nil)
         }
     }
     
+    func restartGame() {
+        self.model!.reset()
+        self.board!.resetTheView()
+        self.model!.insertTileAtRandomPosition(with: 2)
+        self.model!.insertTileAtRandomPosition(with: 2)
+    }
+    
+    func restoreDate() {
+        if UserDefaults.standard.array(forKey: "TilesData") == nil || UserDefaults.standard.array(forKey: "TilesData")!.isEmpty {
+            model!.insertTileAtRandomPosition(with: 2)
+            model!.insertTileAtRandomPosition(with: 2)
+        } else {
+            model!.restoreData(from: UserDefaults.standard.array(forKey: "TilesData")  as! [Int])
+        }
+    }
     
     func setTiles(to tiles: [((Int, Int), Int)]) {
         board!.setTiles(to: tiles)
     }
     
-
+    func setupButton() {
+        view.addSubview(restartGameButton)
+        restartGameButton.translatesAutoresizingMaskIntoConstraints = false
+        restartGameButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        restartGameButton.widthAnchor.constraint(equalToConstant: 280).isActive = true
+        restartGameButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        restartGameButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50).isActive = true
+        addActionToRestartButton()
+    }
+    
+    func addActionToRestartButton() {
+        restartGameButton.addTarget(self, action: #selector(restartGameButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc func restartGameButtonTapped() {
+        restartGameButton.shake()
+        restartGame()
+    }
 }
 

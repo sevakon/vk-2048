@@ -58,7 +58,7 @@ class AppearanceProvider: AppearanceProviderProtocol {
         } else if value < 1024 {
             return UIFont(name: "HelveticaNeue-Bold", size: 40) ?? UIFont.systemFont(ofSize: 40)
         } else {
-            return UIFont(name: "HelveticaNeue-Bold", size: 35) ?? UIFont.systemFont(ofSize: 16)
+            return UIFont(name: "HelveticaNeue-Bold", size: 34) ?? UIFont.systemFont(ofSize: 34)
         }
     }
     

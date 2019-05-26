@@ -42,9 +42,13 @@ class GameBoardView: UIView {
         }
     }
     
-    func setTiles(to tiles: [((Int, Int), Int)]) {
+    func resetTheView() {
         self.subviews.forEach({ $0.removeFromSuperview() })
         setupBackground()
+    }
+    
+    func setTiles(to tiles: [((Int, Int), Int)]) {
+        resetTheView()
         for tile in tiles {
             let (x, y) = tile.0
             let value = tile.1

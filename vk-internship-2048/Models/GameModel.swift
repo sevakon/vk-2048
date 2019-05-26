@@ -34,11 +34,39 @@ class GameModel {
         gameboard.setAll(to: .empty)
     }
     
+    func saveDataToArray() {
+        var data = [Int]()
+        for i in 0..<gameboard.dimension {
+            for j in 0..<gameboard.dimension {
+                if case .empty = gameboard[i, j] {
+                    data.append(0)
+                }
+                if case let .tile(value) = gameboard[i, j] {
+                    data.append(value)
+                }
+            }
+        }
+        UserDefaults.standard.set(data, forKey: "TilesData")
+    }
+    
+    func restoreData(from data: [Int]) {
+        for i in 0..<gameboard.dimension {
+            for j in 0..<gameboard.dimension {
+                if data[gameboard.dimension * i + j] == 0 {
+                    gameboard[i, j] = .empty
+                } else {
+                    gameboard[i, j] = .tile(data[gameboard.dimension * i + j])
+                }
+            }
+        }
+        delegate.setTiles(to: getArrayOfCurrentTiles())
+    }
 
     func insertTile(at index: (Int, Int), with value: Int) {
         let (x, y) = index
         gameboard[x, y] = .tile(value)
         delegate.setTiles(to: getArrayOfCurrentTiles())
+        saveDataToArray()
     }
     
     func insertTileAtRandomPosition(with value: Int) {
@@ -264,4 +292,5 @@ class GameModel {
         }
         return buffer
     }
+    
 }
