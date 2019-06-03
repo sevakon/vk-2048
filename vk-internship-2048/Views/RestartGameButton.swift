@@ -28,9 +28,7 @@ class RestartGameButton: UIButton {
         backgroundColor = .white
         titleLabel?.font = UIFont(name: "HelveticaNeue-Bold", size: 20)
         layer.cornerRadius = 10
-        
     }
-    
     
     func setShadow() {
         layer.shadowColor = UIColor.black.cgColor

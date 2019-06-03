@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		78690A9A22A5529600BACB91 /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78690A9922A5529600BACB91 /* ScoreView.swift */; };
 		787E5E2422955B950025E126 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 787E5E2222955B950025E126 /* Main.storyboard */; };
 		787E5E2822955D450025E126 /* GameBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787E5E2722955D450025E126 /* GameBoard.swift */; };
 		787E5E2A22981B3B0025E126 /* GameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787E5E2922981B3B0025E126 /* GameModel.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		78690A9922A5529600BACB91 /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
 		787E5E2322955B950025E126 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		787E5E2722955D450025E126 /* GameBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBoard.swift; sourceTree = "<group>"; };
 		787E5E2922981B3B0025E126 /* GameModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameModel.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 				78CE4F9C2299F825005063FF /* TileView.swift */,
 				78CE4FA0229A07D2005063FF /* GameBoardView.swift */,
 				78CE4FA2229AA810005063FF /* RestartGameButton.swift */,
+				78690A9922A5529600BACB91 /* ScoreView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -180,6 +183,7 @@
 			files = (
 				787E5E2822955D450025E126 /* GameBoard.swift in Sources */,
 				787E5E2A22981B3B0025E126 /* GameModel.swift in Sources */,
+				78690A9A22A5529600BACB91 /* ScoreView.swift in Sources */,
 				78CE4F9F2299FA58005063FF /* AppearanceProvider.swift in Sources */,
 				78B9970B2294A444000D6E56 /* ViewController.swift in Sources */,
 				78CE4F9D2299F825005063FF /* TileView.swift in Sources */,

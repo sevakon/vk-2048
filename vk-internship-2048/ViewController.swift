@@ -19,14 +19,18 @@ class ViewController: UIViewController, GameModelProtocol {
     let radius: CGFloat = 10.0
     var width: CGFloat?
     
+    var scoreView: ScoreView?
+    var highScoreView: ScoreView?
     var restartGameButton = RestartGameButton()
-        
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         model = GameModel(delegate: self)
         setupGame()
         restoreDate()
         setupButton()
+        setupScoreView()
+        setupHighScoreView()
     }
     
     
@@ -65,15 +69,16 @@ class ViewController: UIViewController, GameModelProtocol {
         
         func xPositionToCenterView(_ v: UIView) -> CGFloat {
             let viewWidth = v.bounds.size.width
-            let tentativeX = 0.5*(vcWidth - viewWidth)
+            let tentativeX = (vcWidth - viewWidth)/2
             return tentativeX >= 0 ? tentativeX : 0
         }
         
         func yPositionToCenterView(_ v: UIView) -> CGFloat {
             let viewHeight = v.bounds.size.height
-            let tentativeY = 0.5*(vcHeight - viewHeight)
+            let tentativeY = (vcHeight - viewHeight)/2
             return tentativeY >= 0 ? tentativeY : 0
         }
+        
         var f = board!.frame
         f.origin.x = xPositionToCenterView(board!)
         f.origin.y = yPositionToCenterView(board!)
@@ -127,11 +132,21 @@ class ViewController: UIViewController, GameModelProtocol {
             model!.insertTileAtRandomPosition(with: 2)
         } else {
             model!.restoreData(from: UserDefaults.standard.array(forKey: "TilesData")  as! [Int])
+            model!.restoreScore(from: UserDefaults.standard.integer(forKey: "Score"))
         }
     }
     
     func setTiles(to tiles: [((Int, Int), Int)]) {
         board!.setTiles(to: tiles)
+    }
+    
+    func scoreChanged(to score: Int) {
+        if scoreView != nil {
+            scoreView!.score = score
+        }
+        if highScoreView != nil {
+            highScoreView!.score = UserDefaults.standard.integer(forKey: "HighScore")
+        }
     }
     
     func setupButton() {
@@ -142,6 +157,29 @@ class ViewController: UIViewController, GameModelProtocol {
         restartGameButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         restartGameButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50).isActive = true
         addActionToRestartButton()
+    }
+    
+    func setupScoreView() {
+        scoreView = ScoreView(width: 280, height: 50, radius: 9.0, substring: "Score")
+        view.addSubview(scoreView!)
+
+        scoreView!.translatesAutoresizingMaskIntoConstraints = false
+        scoreView!.widthAnchor.constraint(equalToConstant: 280).isActive = true
+        scoreView!.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        scoreView!.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        scoreView!.topAnchor.constraint(equalTo: view.topAnchor, constant: 50).isActive = true
+    }
+    
+    func setupHighScoreView() {
+        highScoreView = ScoreView(width: 280, height: 50, radius: 9.0, substring: "High score")
+        highScoreView!.score = UserDefaults.standard.integer(forKey: "HighScore")
+        view.addSubview(highScoreView!)
+        
+        highScoreView!.translatesAutoresizingMaskIntoConstraints = false
+        highScoreView!.widthAnchor.constraint(equalToConstant: 280).isActive = true
+        highScoreView!.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        highScoreView!.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        highScoreView!.topAnchor.constraint(equalTo: view.topAnchor, constant: 105).isActive = true
     }
     
     func addActionToRestartButton() {

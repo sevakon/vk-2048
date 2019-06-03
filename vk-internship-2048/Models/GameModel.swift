@@ -10,6 +10,7 @@ import Foundation
 
 protocol GameModelProtocol : class {
     func setTiles(to tiles: [((Int, Int), Int)])
+    func scoreChanged(to score: Int)
 }
 
 class GameModel {
@@ -20,7 +21,10 @@ class GameModel {
     
     var score = 0 {
         didSet {
-
+            if UserDefaults.standard.integer(forKey: "HighScore") < score {
+                UserDefaults.standard.set(score, forKey: "HighScore")
+            }
+            delegate.scoreChanged(to: score)
         }
     }
     
@@ -49,6 +53,10 @@ class GameModel {
         UserDefaults.standard.set(data, forKey: "TilesData")
     }
     
+    func saveScore() {
+        UserDefaults.standard.set(score, forKey: "Score")
+    }
+    
     func restoreData(from data: [Int]) {
         for i in 0..<gameboard.dimension {
             for j in 0..<gameboard.dimension {
@@ -59,7 +67,13 @@ class GameModel {
                 }
             }
         }
+        
         delegate.setTiles(to: getArrayOfCurrentTiles())
+    }
+    
+    func restoreScore(from score: Int) {
+        self.score = score
+        delegate.scoreChanged(to: self.score)
     }
 
     func insertTile(at index: (Int, Int), with value: Int) {
@@ -67,6 +81,7 @@ class GameModel {
         gameboard[x, y] = .tile(value)
         delegate.setTiles(to: getArrayOfCurrentTiles())
         saveDataToArray()
+        saveScore()
     }
     
     func insertTileAtRandomPosition(with value: Int) {

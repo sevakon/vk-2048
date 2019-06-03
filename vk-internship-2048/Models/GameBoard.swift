@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 enum Tile {
     case empty
     case tile(Int)
@@ -31,7 +30,6 @@ enum MoveDirection {
 
 
 struct GameBoard {
-    
     var boardArray = [[Tile]]()
     
     public let dimension = 4
