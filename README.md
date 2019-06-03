@@ -8,7 +8,7 @@ A game of 2048 for summer internship at VK
 - No animation yet :(
 
 ## Screenshot
-![Alt text](https://vk.com/doc135781516_503799768?hash=88493b184a29805c89&dl=25dfb9689494edd503)
+![Alt text](https://pp.userapi.com/c851028/v851028102/131cb0/4qqOKFlmXtY.jpg)
 
 ## Demo
 [![Watch the video](https://img.youtube.com/vi/oLvxD3FqxUE/hqdefault.jpg)](https://youtu.be/oLvxD3FqxUE)
