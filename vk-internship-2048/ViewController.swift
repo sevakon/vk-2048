@@ -31,23 +31,27 @@ class ViewController: UIViewController, GameModelProtocol {
     
     
     @IBAction func swipeGestureLeft(_ sender: UISwipeGestureRecognizer) {
-        model!.performMove(direction: MoveDirection.left)
-        followUp()
+        if model!.performMove(direction: MoveDirection.left) {
+            followUp()
+        }
     }
     
     @IBAction func swipeGestureRight(_ sender: UISwipeGestureRecognizer) {
-        model!.performMove(direction: MoveDirection.right)
-        followUp()
+        if model!.performMove(direction: MoveDirection.right) {
+            followUp()
+        }
     }
     
     @IBAction func swipeGestureUp(_ sender: UISwipeGestureRecognizer) {
-        model!.performMove(direction: MoveDirection.up)
-        followUp()
+        if model!.performMove(direction: MoveDirection.up) {
+            followUp()
+        }
     }
     
     @IBAction func swipeGestureDown(_ sender: UISwipeGestureRecognizer) {
-        model!.performMove(direction: MoveDirection.down)
-        followUp()
+        if model!.performMove(direction: MoveDirection.down) {
+            followUp()
+        }
     }
     
     

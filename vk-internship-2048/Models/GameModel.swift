@@ -140,80 +140,117 @@ class GameModel {
         return false
     }
     
-    func performMove(direction: MoveDirection) {
+    func performMove(direction: MoveDirection) -> Bool {
         switch direction {
         case .up:
-            slideUp()
-            combineUp()
-            slideUp()
+            let resultForSlide1 = slideUp()
+            print(resultForSlide1)
+            let resultForCombine = combineUp()
+            print(resultForCombine)
+            let resultForSlide2 = slideUp()
+            print(resultForSlide2)
+            return resultForSlide1 || resultForCombine || resultForSlide2
         case .down:
-            slideDown()
-            combineDown()
-            slideDown()
+            let resultForSlide1 = slideDown()
+            print(resultForSlide1)
+            let resultForCombine = combineDown()
+            print(resultForCombine)
+            let resultForSlide2 = slideDown()
+            print(resultForSlide2)
+            return resultForSlide1 || resultForCombine || resultForSlide2
         case .left:
-            slideLeft()
-            combineLeft()
-            slideLeft()
+            let resultForSlide1 = slideLeft()
+            print(resultForSlide1)
+            let resultForCombine = combineLeft()
+            print(resultForCombine)
+            let resultForSlide2 = slideLeft()
+            print(resultForSlide2)
+            return resultForSlide1 || resultForCombine || resultForSlide2
         case .right:
-            slideRight()
-            combineRight()
-            slideRight()
+            let resultForSlide1 = slideRight()
+            print(resultForSlide1)
+            let resultForCombine = combineRight()
+            print(resultForCombine)
+            let resultForSlide2 = slideRight()
+            print(resultForSlide2)
+            return resultForSlide1 || resultForCombine || resultForSlide2
         }
     }
     
-    func slideUp() {
+    func slideUp() -> Bool {
+        var atLeastOneMove = false
         for j in 0..<gameboard.dimension {
-             for _ in 0...3 {
+             for _ in 0...gameboard.dimension - 1 {
                 for i in 0..<gameboard.dimension - 1 {
                     if case .empty = gameboard[i, j] {
+                        if case .tile(_) = gameboard[i + 1, j] {
+                            atLeastOneMove = true
+                        }
                         gameboard[i, j] = gameboard[i + 1, j]
                         gameboard[i + 1, j] = .empty
                     }
                 }
             }
         }
+        return atLeastOneMove
     }
     
-    func slideDown() {
+    func slideDown() -> Bool {
+        var atLeastOneMove = false
         for j in 0..<gameboard.dimension {
-            for _ in 0...3{
+            for _ in 0...gameboard.dimension - 1{
                 for i in stride(from: gameboard.dimension - 1, to: 0, by: -1) {
                     if case .empty = gameboard[i, j] {
+                        if case .tile(_) = gameboard[i - 1, j] {
+                            atLeastOneMove = true
+                        }
                         gameboard[i, j] = gameboard[i - 1, j]
                         gameboard[i - 1, j] = .empty
                     }
                 }
             }
         }
+        return atLeastOneMove
     }
     
-    func slideLeft() {
+    func slideLeft() -> Bool {
+        var atLeastOneMove = false
         for i in 0..<gameboard.dimension {
-            for _ in 0...3 {
+            for _ in 0...gameboard.dimension - 1 {
                 for j in 0..<gameboard.dimension - 1 {
                     if case .empty = gameboard[i, j] {
+                        if case .tile(_) = gameboard[i, j + 1] {
+                            atLeastOneMove = true
+                        }
                         gameboard[i, j] = gameboard[i, j + 1]
                         gameboard[i, j + 1] = .empty
                     }
                 }
             }
         }
+        return atLeastOneMove
     }
     
-    func slideRight() {
+    func slideRight() -> Bool {
+        var atLeastOneMove = false
         for i in 0..<gameboard.dimension {
-            for _ in 0...3 {
+            for _ in 0...gameboard.dimension - 1 {
                 for j in stride(from: gameboard.dimension - 1, to: 0, by: -1) {
                     if case .empty = gameboard[i, j] {
+                        if case .tile(_) = gameboard[i, j - 1] {
+                            atLeastOneMove = true
+                        }
                         gameboard[i, j] = gameboard[i, j - 1]
                         gameboard[i, j - 1] = .empty
                     }
                 }
             }
         }
+        return atLeastOneMove
     }
     
-    func combineUp() {
+    func combineUp() -> Bool {
+        var atLeastOneMove = false
         for j in 0..<gameboard.dimension {
             for i in 0..<gameboard.dimension - 1 {
                 if gameboard[i + 1, j].getValue() == gameboard[i, j].getValue() && gameboard[i + 1, j].getValue() != nil {
@@ -221,12 +258,15 @@ class GameModel {
                     let newValue: Int = 2 * gameboard[i + 1, j].getValue()!
                     gameboard[i, j] = .tile(newValue)
                     gameboard[i + 1, j] = .empty
+                    atLeastOneMove = true
                 }
             }
         }
+        return atLeastOneMove
     }
     
-    func combineDown() {
+    func combineDown() -> Bool {
+        var atLeastOneMove = false
         for j in 0..<gameboard.dimension {
             for i in stride(from: gameboard.dimension - 1, to: 0, by: -1) {
                 if gameboard[i - 1, j].getValue() == gameboard[i, j].getValue() && gameboard[i - 1, j].getValue() != nil {
@@ -234,12 +274,15 @@ class GameModel {
                     let newValue: Int = 2 * gameboard[i - 1, j].getValue()!
                     gameboard[i, j] = .tile(newValue)
                     gameboard[i - 1, j] = .empty
+                    atLeastOneMove = true
                 }
             }
         }
+        return atLeastOneMove
     }
     
-    func combineLeft() {
+    func combineLeft() -> Bool {
+        var atLeastOneMove = false
         for i in 0..<gameboard.dimension {
             for j in 0..<gameboard.dimension - 1 {
                 if gameboard[i, j].getValue() == gameboard[i, j + 1].getValue() && gameboard[i, j].getValue() != nil {
@@ -247,12 +290,15 @@ class GameModel {
                     let newValue: Int = 2 * gameboard[i, j].getValue()!
                     gameboard[i, j] = .tile(newValue)
                     gameboard[i, j + 1] = .empty
+                    atLeastOneMove = true
                 }
             }
         }
+        return atLeastOneMove
     }
     
-    func combineRight() {
+    func combineRight() -> Bool {
+        var atLeastOneMove = false
         for i in 0..<gameboard.dimension {
             for j in stride(from: gameboard.dimension - 1, to: 0, by: -1) {
                 if gameboard[i, j].getValue() == gameboard[i, j - 1].getValue() && gameboard[i, j].getValue() != nil {
@@ -260,9 +306,11 @@ class GameModel {
                     let newValue: Int = 2 * gameboard[i, j].getValue()!
                     gameboard[i, j] = .tile(newValue)
                     gameboard[i, j - 1] = .empty
+                    atLeastOneMove = true
                 }
             }
         }
+        return atLeastOneMove
     }
     
     func printCurrentGameBoardToConsole() {
