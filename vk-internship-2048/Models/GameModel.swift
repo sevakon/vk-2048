@@ -6,6 +6,8 @@
 //  Copyright © 2019 Vsevolod Konyakhin. All rights reserved.
 //
 
+// Test 
+
 import Foundation
 
 protocol GameModelProtocol : class {
