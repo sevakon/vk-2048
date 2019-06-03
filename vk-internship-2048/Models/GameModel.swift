@@ -144,35 +144,23 @@ class GameModel {
         switch direction {
         case .up:
             let resultForSlide1 = slideUp()
-            print(resultForSlide1)
             let resultForCombine = combineUp()
-            print(resultForCombine)
             let resultForSlide2 = slideUp()
-            print(resultForSlide2)
             return resultForSlide1 || resultForCombine || resultForSlide2
         case .down:
             let resultForSlide1 = slideDown()
-            print(resultForSlide1)
             let resultForCombine = combineDown()
-            print(resultForCombine)
             let resultForSlide2 = slideDown()
-            print(resultForSlide2)
             return resultForSlide1 || resultForCombine || resultForSlide2
         case .left:
             let resultForSlide1 = slideLeft()
-            print(resultForSlide1)
             let resultForCombine = combineLeft()
-            print(resultForCombine)
             let resultForSlide2 = slideLeft()
-            print(resultForSlide2)
             return resultForSlide1 || resultForCombine || resultForSlide2
         case .right:
             let resultForSlide1 = slideRight()
-            print(resultForSlide1)
             let resultForCombine = combineRight()
-            print(resultForCombine)
             let resultForSlide2 = slideRight()
-            print(resultForSlide2)
             return resultForSlide1 || resultForCombine || resultForSlide2
         }
     }
