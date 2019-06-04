@@ -105,21 +105,22 @@ class ViewController: UIViewController, GameModelProtocol {
             self.present(alertControllerForLose, animated: true, completion: nil)
         }
         
-        if model!.userHasWon() {
+        if model!.userHasWon() && !UserDefaults.standard.bool(forKey: "HasWonOnce") {
+            UserDefaults.standard.set(true, forKey: "HasWonOnce")
             let alertControllerForWin = UIAlertController(title: "Victory!", message: "You won", preferredStyle: .alert)
             
-            let actionRestart = UIAlertAction(title: "Start a new game", style: .default) {
+            let action = UIAlertAction(title: "Continue playing", style: .default) {
                 UIAlertAction in
-                self.restartGame()
             }
             
-            alertControllerForWin.addAction(actionRestart)
+            alertControllerForWin.addAction(action)
             
             self.present(alertControllerForWin, animated: true, completion: nil)
         }
     }
     
     func restartGame() {
+        UserDefaults.standard.set(false, forKey: "HasWonOnce")
         self.model!.reset()
         self.board!.resetTheView()
         self.model!.insertTileAtRandomPosition(with: 2)

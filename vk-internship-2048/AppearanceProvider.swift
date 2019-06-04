@@ -39,6 +39,16 @@ class AppearanceProvider: AppearanceProviderProtocol {
             return UIColor(red: 0/255, green: 24/255, blue: 184/255, alpha: 1.0)
         case 2048:
             return UIColor(red: 17/255, green: 5/255, blue: 112/255, alpha: 1.0)
+        case 4096:
+            return UIColor(red: 10/255, green: 0/255, blue: 102/355, alpha: 1.0)
+        case 8192:
+            return UIColor(red: 0/255, green: 0/255, blue: 90/355, alpha: 1.0)
+        case 16384:
+            return UIColor(red: 0/255, green: 0/255, blue: 75/355, alpha: 1.0)
+        case 32768:
+            return UIColor(red: 0/255, green: 0/255, blue: 60/355, alpha: 1.0)
+        case 65536:
+            return UIColor(red: 0/255, green: 0/255, blue: 45/355, alpha: 1.0)
         default:
             return UIColor(red: 184/255, green: 193/255, blue: 204/255, alpha: 1.0)
         }
@@ -57,8 +67,10 @@ class AppearanceProvider: AppearanceProviderProtocol {
             return UIFont(name: "HelveticaNeue-Bold", size: 40) ?? UIFont.systemFont(ofSize: 40)
         } else if value < 1024 {
             return UIFont(name: "HelveticaNeue-Bold", size: 40) ?? UIFont.systemFont(ofSize: 40)
-        } else {
+        } else if value < 16384 {
             return UIFont(name: "HelveticaNeue-Bold", size: 34) ?? UIFont.systemFont(ofSize: 34)
+        } else {
+            return UIFont(name: "HelveticaNeue-Bold", size: 28) ?? UIFont.systemFont(ofSize: 28)
         }
     }
     
